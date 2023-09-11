@@ -1,21 +1,47 @@
 ---
-const title = '关于';
+const title = "关于";
+
+const identity = {
+  firstName: "郑超",
+  country: "河北唐山",
+  occupation: "前端工程师",
+  hobbies: ["足球", "音乐", "Dota"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Vue", "Astro"];
 ---
 
 <html lang="cn">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Document</title>
-    </head>
-    <body>
-        <a href="/">首页</a>
-        <a href="/about/">关于</a>
-        <a href="/blog/">博客</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/">首页</a>
+    <a href="/about/">关于</a>
+    <a href="/blog/">博客</a>
 
-        <h1>{title}</h1>
-        <h2>...和我的新Astro网站！</h2>
-        <p>我正在学习Astro的入门教程。</p>
-    </body>
+    <h1>{title}</h1>
+    <h2>...和我的新Astro网站！</h2>
+    <p>我正在学习Astro的入门教程。</p>
+
+    <p>个人简历</p>
+    <ul>
+      <li>我的名字是{identity.firstName}.</li>
+      <li>我住在{identity.country}.我的职业是{identity.occupation}.</li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            我的两个习惯：{identity.hobbies[0]}和{identity.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <p>我的技能是：</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+  </body>
 </html>
